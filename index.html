@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wavify — Music Player</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- AMBIENT GLOW -->
+<div class="ambient" id="ambient"></div>
+
+<div class="app">
+
+  <!-- HEADER -->
+  <div class="app-header">
+    <div class="logo">
+      <div class="logo-icon">♪</div>
+      Wavify
+    </div>
+    <div class="header-tag">CodeAlpha · Task 4</div>
+  </div>
+
+  <!-- MAIN CARD -->
+  <div class="main-card">
+
+    <!-- LEFT -->
+    <div class="left" id="leftPanel">
+      <div class="art-glow" id="artGlow"></div>
+
+      <!-- Album Art -->
+      <div class="art-wrap" id="artWrap">
+        <div class="art-ring" id="artRing"></div>
+        <img id="albumArt" src="images/Chill Ambient.jpg" alt="Album Art">
+      </div>
+
+      <!-- Meta -->
+      <div class="song-meta">
+        <div class="song-title-row">
+          <div id="songTitle">Chill Ambient</div>
+          <button class="like-btn" id="likeBtn" title="Like">🤍</button>
+        </div>
+        <div id="songArtist">
+          <span id="artistName">Lo-Fi Studio</span>
+          <span class="genre-pill" id="genrePill">Lo-Fi</span>
+        </div>
+      </div>
+
+      <!-- Waveform visualizer -->
+      <div class="visualizer" id="visualizer"></div>
+
+      <!-- Progress -->
+      <div class="progress-section">
+        <div class="time-row">
+          <span id="currentTime">0:00</span>
+          <span id="duration">—</span>
+        </div>
+        <div class="progress-track" id="progressTrack">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls">
+        <button class="ctrl-btn" id="btnShuffle" title="Shuffle (S)">⇌</button>
+        <button class="ctrl-btn" id="btnPrev" title="Previous (←)">⏮</button>
+        <button class="ctrl-btn play-btn" id="btnPlay" title="Play / Pause (Space)">▶</button>
+        <button class="ctrl-btn" id="btnNext" title="Next (→)">⏭</button>
+        <button class="ctrl-btn" id="btnRepeat" title="Repeat (R)">↻</button>
+      </div>
+
+      <!-- Volume -->
+      <div class="volume-row">
+        <span class="vol-icon" id="volIcon" title="Mute (M)">🔈</span>
+        <input type="range" id="volume" min="0" max="100" value="70">
+        <span class="vol-pct" id="volPct">70%</span>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="playlist">Playlist</button>
+        <button class="tab-btn" data-tab="queue">Up Next</button>
+        <button class="tab-btn" data-tab="stats">Stats</button>
+      </div>
+
+      <!-- PLAYLIST TAB -->
+      <div class="tab-pane active" id="tab-playlist">
+        <div class="playlist-bar">
+          <div class="playlist-search">
+            <span>🔍</span>
+            <input type="text" id="searchInput" placeholder="Search tracks…">
+          </div>
+          <select class="sort-select" id="sortSelect">
+            <option value="default">Default</option>
+            <option value="az">A–Z</option>
+            <option value="duration">Duration</option>
+            <option value="genre">Genre</option>
+          </select>
+        </div>
+        <div class="playlist-scroll" id="playlistEl"></div>
+      </div>
+
+      <!-- QUEUE TAB -->
+      <div class="tab-pane" id="tab-queue">
+        <div class="playlist-scroll" id="queueEl" style="padding-top:12px">
+          <div class="up-next-section">
+            <div class="up-next-label">Up Next</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STATS TAB -->
+      <div class="tab-pane" id="tab-stats">
+        <div class="stats-pane" id="statsPane"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div class="bottom-bar">
+    <div class="now-playing-mini">
+      <img class="mini-art" id="miniArt" src="images/Chill Ambient.jpg" alt="">
+      <div class="mini-info">
+        <div class="mini-title" id="miniTitle">Chill Ambient</div>
+        <div class="mini-artist" id="miniArtist">Lo-Fi Studio</div>
+      </div>
+    </div>
+    <div class="keyboard-hints">
+      <div class="hint"><kbd class="kbd">Space</kbd> Play/Pause</div>
+      <div class="hint"><kbd class="kbd">← →</kbd> Skip</div>
+      <div class="hint"><kbd class="kbd">↑ ↓</kbd> Volume</div>
+      <div class="hint"><kbd class="kbd">M</kbd> Mute</div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- AUDIO -->
+<audio id="audioEl" preload="metadata"></audio>
+<script src="script.js" defer></script>
+</body>
+</html>
